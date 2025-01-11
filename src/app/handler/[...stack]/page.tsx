@@ -1,3 +1,5 @@
+'use client'; // Mark this file as a client-side component
+
 import React, { useState, useEffect, JSX } from "react";
 import { StackHandler } from "@stackframe/stack";
 import { stackServerApp } from "../../../stack";
@@ -8,13 +10,13 @@ export default function Handler(props: unknown) {
   useEffect(() => {
     async function fetchStackContent() {
       try {
-        // Call StackHandler with the same arguments as in your original code
+        // Call StackHandler with the provided arguments
         const resolvedContent = await StackHandler({
           fullPage: true,
           app: stackServerApp,
           routeProps: props,
         });
-        // Ensure the returned content is valid JSX
+        // Ensure the resolved content is a valid JSX element
         if (React.isValidElement(resolvedContent)) {
           setContent(resolvedContent);
         } else {
@@ -30,7 +32,7 @@ export default function Handler(props: unknown) {
     fetchStackContent();
   }, [props]);
 
-  // Show a loading state while waiting for StackHandler to resolve
+  // Display loading state while content is being fetched
   if (!content) {
     return <div>Loading...</div>;
   }
