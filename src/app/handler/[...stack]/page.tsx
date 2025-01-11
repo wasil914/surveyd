@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, JSX } from "react";
 import { StackHandler } from "@stackframe/stack";
-import { stackServerApp } from "../../../stack";
+import { stackServerApp } from "../../stack";
 
 export default function Handler(props: unknown) {
   const [content, setContent] = useState<JSX.Element | null>(null);
